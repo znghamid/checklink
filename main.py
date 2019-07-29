@@ -29,7 +29,7 @@ def popupmsg(msg):
     #popup.geometry("260x100")
     popup.config(bg="white")
     try:
-        popup.wm_iconbitmap(str(os.popen("cd").read().replace("\n", ''))+r'\\file/icon/icon.ico')
+        popup.wm_iconbitmap('./file/icon/icon.ico')
     except:
         pass
     popup.resizable(width=False, height=False)
@@ -52,8 +52,12 @@ class App(Tk):
         selfs_driverPath = r'./file/webdriver/chromedriver.exe'
         options = webdriver.ChromeOptions()   
         options.add_argument('--headless')
-        global driver
-        driver = webdriver.Chrome(executable_path=selfs_driverPath,chrome_options=options)
+        try:
+            global driver
+            driver = webdriver.Chrome(executable_path=selfs_driverPath,chrome_options=options)
+        except:
+            popupmsg("پیدا نشد chromedriver فایل")
+            app.quit()
         #desigen application
         frame1 = LabelFrame(self,bd=0,text="",fg="spring green4",font="IRANSans 10",bg="lightyellow3")
         frame1.pack(padx=(5,5),pady=(5,5),fill=BOTH)
@@ -225,8 +229,13 @@ class func():
 
 # finish run application
 if __name__ == "__main__":
+    global app
     app = App()
-    app.iconbitmap("./file/icon/icon.ico")
+    try:
+        app.iconbitmap("./file/icon/icon.ico")
+    except:
+        popupmsg("فایل آیکون پیدا نشد")
+        pass
     app.resizable(width=False, height=False)
     #geometry('700x500')
     app.protocol("WM_DELETE_WINDOW", exit_event)
