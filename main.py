@@ -204,20 +204,20 @@ class func():
     def whois():
         Name = name_site.get()
         progress.start()
-        driver.get("https://www.whois.net/")
-        name = driver.find_element_by_css_selector("#domain_search")
-        name.send_keys(Name)
+        driver.get("https://whois.irdomain.com/{}".format(Name))
         try:
-            driver.find_element_by_css_selector("#searchBox > table > tbody > tr > td > a").click()
+            result = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"body > table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > table:nth-child(14) > tbody > tr:nth-child(2) > td:nth-child(2) > div:nth-child(2)"))).text
         except:
-            time.sleep(5)
-            driver.find_element_by_css_selector("#searchBox > table > tbody > tr > td > a").click()
+            popupmsg("لطفا دوباره تلاش کنید")
+            return "not result"
+            #result = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"body > table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > table:nth-child(14) > tbody > tr:nth-child(2) > td:nth-child(2) > div:nth-child(2)"))).text
+        
         try:
-            result = WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"#whois_result_data"))).text
-        except:
-            time.sleep(5)
-            result = WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR,"#whois_result_data"))).text
-        text_whois = open(r"./whois/{}.txt".format(Name),"w")
+            text_whois = open(r"./whois/{}.txt".format(Name),"w")
+        except FileNotFoundError:
+            directory = './whois'
+            os.mkdir(directory)
+            text_whois = open(r"./whois/{}.txt".format(Name),"w")
         text_whois.write(result)
         text_whois.close()
         progress.stop()

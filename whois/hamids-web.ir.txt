@@ -1,0 +1,36 @@
+% This is the IRNIC Whois server v1.6.2.
+% Available on web at http://whois.nic.ir/
+% Find the terms and conditions of use on http://www.nic.ir/
+%
+% This server uses UTF-8 as the encoding for requests and responses.
+
+% NOTE: This output has been filtered.
+
+% Information related to 'hamids-web.ir'
+
+
+domain: hamids-web.ir
+ascii: hamids-web.ir
+remarks: (Domain Holder) Hamidreza Zangoie
+remarks: (Domain Holder Address) 3173884874, Fardis, Alborz, IR
+holder-c: hz1905-irnic
+admin-c: hz1905-irnic
+tech-c: hz1905-irnic
+bill-c: ra1722-irnic
+nserver: ns1.artanserver.ir
+nserver: ns2.artanserver.ir
+last-updated: 2019-07-15
+expire-date: 2020-07-13
+source: IRNIC # Filtered
+
+nic-hdl: hz1905-irnic
+person: Hamidreza Zangoie
+e-mail: hrzangoie@gmail.com
+address: 3173884874, Fardis, Alborz, IR
+phone: 09031747127
+source: IRNIC # Filtered
+
+nic-hdl: ra1722-irnic
+org: Rayan Dadeh Negar Dena
+e-mail: rayan@talahost.com
+source: IRNIC # Filtered
